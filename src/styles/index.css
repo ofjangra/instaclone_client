@@ -1,0 +1,96 @@
+@font-face {
+    font-family: muliRegular;
+    src: url("/font/Muli-Regular.ttf");
+}
+@font-face {
+    font-family: grandHotel;
+    src: url('/font/Grand_Hotel/GrandHotel-Regular.ttf');
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: muliRegular;
+}
+
+
+.link{
+    text-decoration: none;
+    color: #000000;
+}
+.link:active{
+    text-decoration: none;
+    color: #000000;
+}
+
+.loginMain{
+    height: 80vh;
+    min-height: 590px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card{
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: aqua; */
+}
+.card form{
+    height: auto;
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: aliceblue; */
+}
+.card h3{
+    font-size: 32px;
+    font-weight: lighter;
+    font-family: grandHotel;
+}
+ .inputField{
+    height: auto;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    
+    /* background-color: blue; */
+    margin-bottom: 20px;
+
+}
+.inputField input{
+    border: 1px solid gray;
+    background: none;
+    padding: 5px;
+    height: 40px;
+    width: 100%;
+
+}
+.inputField:focus{
+    outline: 0;
+}
+.inputField p{
+    align-self: flex-start;
+    color: firebrick;
+}
+
+form button{
+    height: 36px;
+    width: 120px;
+    background-color: rgb(3, 135, 243);
+    color: #ffffff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
