@@ -17,7 +17,7 @@ const Home = () =>{
             if(!tokenPresent){
                return  navigate("/accounts/signin")
             }
-            const resp = await fetch("http://localhost:5000",{
+            const resp = await fetch("https://reinstagram.herokuapp.com/",{
                 method:"GET",
                 headers:{
                     "Content-Type":"application/json",

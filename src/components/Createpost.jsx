@@ -62,7 +62,7 @@ const Createpost = ({open, onClose}) =>{
 
         const cloudRespImageUrl = await cloudinaryRespJson.url
 
-        const savepost = await fetch("http://localhost:5000/createpost",{
+        const savepost = await fetch("https://reinstagram.herokuapp.com/createpost",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",

@@ -17,7 +17,7 @@ const Signup = () => {
 
   const signinUser = async (username, password) =>{
     try{
-        const resp = await fetch("http://localhost:5000/signin",{
+        const resp = await fetch("https://reinstagram.herokuapp.com/signin",{
             method:"POST",
             headers:{
                 "Content-Type": "application/json"
@@ -42,7 +42,7 @@ const Signup = () => {
     const { username,phone, password } = formik.values;
 
     try {
-      const signUpResp = await fetch("http://localhost:5000/signup", {
+      const signUpResp = await fetch("https://reinstagram.herokuapp.com/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
