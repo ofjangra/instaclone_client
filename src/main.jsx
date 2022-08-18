@@ -1,7 +1,5 @@
 import React from 'react'
 import reactDom from 'react-dom/client'
-import store from './redux/store'
-import { Provider } from 'react-redux'
 import "./styles/index.css"
 import "./styles/Profile.css"
 import "./styles/Home.css"

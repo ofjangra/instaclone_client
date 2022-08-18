@@ -98,7 +98,7 @@ const Signup = () => {
     <>
       <div className="loginMain">
         <div className="card">
-          <h3>Instagram</h3>
+          <h3>Reinstagram</h3>
           <form onSubmit={formik.handleSubmit}>
             <div className="inputField">
               <input

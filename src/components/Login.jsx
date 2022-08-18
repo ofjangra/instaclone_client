@@ -62,7 +62,7 @@ const Login = () =>{
            {<p>{loginErr}</p>}
         <div className = "card">
            
-            <h3>Instagram</h3>
+            <h3>Reinstagram</h3>
             <form onSubmit={formik.handleSubmit} method="POST">
             <div className="inputField">
          <input type = "text"

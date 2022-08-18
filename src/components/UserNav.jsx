@@ -12,7 +12,7 @@ const UserNav = () =>{
         <>
             <nav className="user_navbar">
                 <div className="logo">
-                    <h1>Instagram</h1>
+                    <h1>Reinstagram</h1>
                 </div>
                 <div className="links">
                     <HomeIcon/>
