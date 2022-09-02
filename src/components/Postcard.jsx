@@ -1,47 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Comment} from "@mui/icons-material";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 const Postcard = (props) =>{
+
+    
     return(
         <>
         <div className="homePost">
                     <div className="publisherDetails">
-                            <img src = "/img/p0.jpg" alt = "profile photo"/>
-                            <strong>kibo</strong>
+                            <img src = {props.publisherPhoto} alt = "profile photo"/>
+                            <strong>{props.publisher}</strong>
+                          {props.publisher == props.viewer ? <DeleteIcon id = "deleteIcon" onClick = {props.deletePost}/> : null}
                     </div>
                     <div className="postImg">
                         <img src = {props.imgSrc}
                             alt = "post"/>
                     </div>
                     <div className="postActions">
-                            {/* <FontAwesomeIcon icon={faHeart}/>
-                            <FontAwesomeIcon icon={faComment}/> */}
                             <Comment/>
                             <FavoriteBorderIcon/>
-                            
+
                     </div>
                     <span className="likesCount">
                         <strong>45</strong> likes
                     </span>
                     <div className="postDetails">
                         <div className="postBody">
-                            <strong>kibo</strong>
+                            <strong>{props.publisher}</strong>
                             <p>
-                                this is amazing post
+                                {props.caption}
                             </p>
-                        </div>
-                        <div className="postComments">
-                            <div className="postComment">
-                                
-                                <p><strong>Marcus </strong>This is a comment</p>
-                            </div>
-                            <div className="postComment">
-                                
-                                <p><strong>Alex </strong>This is the second comment</p>
-                            </div>
                         </div>
                         <span className="blue-text">view all 54 comments</span>
                         <div className="makeComment">
@@ -51,8 +43,8 @@ const Postcard = (props) =>{
                                 Post
                             </button>
                         </div>
-                        
-                       
+
+
                     </div>
                 </div>
         </>

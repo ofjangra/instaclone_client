@@ -52,6 +52,8 @@ const Createpost = ({open, onClose}) =>{
         data.append("upload_preset", "instaclone")
         data.append("cloud_name","ofjangra")
 
+        console.log(data)
+
        const cloudinaryResp = await fetch("https://api.cloudinary.com/v1_1/ofjangra/image/upload",{
             method:"POST",
             body: data
@@ -62,7 +64,7 @@ const Createpost = ({open, onClose}) =>{
 
         const cloudRespImageUrl = await cloudinaryRespJson.url
 
-        const savepost = await fetch("https://reinstagram.herokuapp.com/createpost",{
+        const savepost = await fetch("http://localhost:5000/createpost",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",
