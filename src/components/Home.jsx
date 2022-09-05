@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Navigate } from "react-router-dom";
 import Postcard from "./Postcard";
 import UserNav from "./UserNav";
 
-
+const API_endpoint = 'http://localhost:5000'
 
 
 const Home = () =>{
     const navigate = useNavigate()
     const [data, setData] = useState({
         posts:[],
-        viewer:""
+        viewer:{
+            username:"",
+            id:""
+        }
     })
 
     const fetchUser = async () =>{
@@ -21,7 +23,7 @@ const Home = () =>{
             if(!tokenPresent){
                return  navigate("/signin")
             }
-            const resp = await fetch("http://localhost:5000/allpost",{
+            const resp = await fetch(API_endpoint + "/allpost",{
                 method:"GET",
                 headers:{
                     "Content-Type":"application/json",
@@ -32,7 +34,13 @@ const Home = () =>{
             const respJson = await resp.json();
 
             console.log(respJson)
-            setData(respJson)
+            setData({
+                posts:respJson.posts,
+                viewer:{
+                    username:respJson.viewer.username,
+                    id:respJson.viewer.id
+                }
+            })
 
             if (respJson.error){
 
@@ -55,10 +63,11 @@ const Home = () =>{
        })
 
        setData({
-           posts:filteredPosts
+           posts:filteredPosts,
+           viewer:data.viewer
        })
        try{
-       const resp = await fetch(`http://localhost:5000/deletepost/${id}`, {
+       const resp = await fetch(API_endpoint + `/deletepost/${id}`, {
            method:"DELETE",
            headers:{
                "Content-Type":"application/json",
@@ -79,23 +88,30 @@ const Home = () =>{
         <UserNav/>
         <div className="home">
             <div className="homePosts">
+
                 {
                     data.posts.map((post) =>{
-                      console.log(post)
                         return(
-                            <Postcard 
+                            <Postcard
+                            post_id = {post._id}
                             deletePost = {() => delete_Post(post._id)}
                             publisherPhoto = {post.postedBy.photo_url}
                             publisher = {post.postedBy.username}
-                            viewer = {data.viewer}
+                            viewer = {data.viewer.username}
                             key = {post._id}
                             postId = {post._id}
                             imgSrc = {post.imageurl}
                             caption = {post.caption}
+                            likes = {post.likes}
+                            liked = {post.likes.includes(data.viewer.id) ? true : false}
+                            comments = {post.comments}
                             />
                         )
                     })
                 }
+            </div>
+            <div className="followSuggestions">
+                
             </div>
         </div>
         </>
