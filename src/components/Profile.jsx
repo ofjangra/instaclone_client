@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-
-import SettingsIcon from '@mui/icons-material/Settings';
 import UserNav from "./UserNav";
-
+const API_endpoint = 'http://localhost:5000'
 const Profile = () =>{
 
     const navigate = useNavigate()
@@ -25,7 +23,7 @@ const Profile = () =>{
             navigate("/signin")
         }
 
-        const resp = await fetch('http://localhost:5000/profile', {
+        const resp = await fetch(API_endpoint+'/profile', {
             method:"GET",
             headers:{
                 "Content-Type":"application/json",

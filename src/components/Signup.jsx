@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
+const API_endpoint = 'http://localhost:5000'
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const Signup = () => {
 
   const signinUser = async (username, password) =>{
     try{
-        const resp = await fetch("http://localhost:5000/signin",{
+        const resp = await fetch(API_endpoint+"/signin",{
             method:"POST",
             headers:{
                 "Content-Type": "application/json"
@@ -42,7 +42,7 @@ const Signup = () => {
     const { username,phone, password } = formik.values;
 
     try {
-      const signUpResp = await fetch("http://localhost:5000/signup", {
+      const signUpResp = await fetch(API_endpoint+"/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

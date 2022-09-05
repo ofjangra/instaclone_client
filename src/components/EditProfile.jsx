@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react'
 import { useNavigate } from 'react-router-dom'
 import UserNav from './UserNav'
 
-
+const API_endpoint = 'http://localhost:5000'
 
 const EditProfile = () =>{
     
@@ -92,7 +92,7 @@ const EditProfile = () =>{
     }
 
     const getUserData = async () =>{
-        const resp = await fetch('http://localhost:5000/profile', {
+        const resp = await fetch(API_endpoint+'/profile', {
             method:"GET",
             headers:{
                 "Content-Type":"application/json",
@@ -120,7 +120,7 @@ const EditProfile = () =>{
 
     const updateProfile = async () =>{
         try{
-        const updateProfileResp = await fetch("http://localhost:5000/editprofile", {
+        const updateProfileResp = await fetch(API_endpoint+"/editprofile", {
             method:"PUT",
             headers: {
                 "Content-Type":"application/json",
@@ -172,7 +172,7 @@ const EditProfile = () =>{
 
         const cloudRespImageUrl = await cloudinaryRespJson.url
 
-        const updatePhotoResp = await fetch('http://localhost:5000/editprofile/photo',{
+        const updatePhotoResp = await fetch(API_endpoint+'/editprofile/photo',{
             method:"PUT",
             headers:{
                 "Content-Type":"application/json",
