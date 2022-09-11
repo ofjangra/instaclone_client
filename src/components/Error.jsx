@@ -21,8 +21,8 @@ const ErrorPage = () =>{
                 alignItems:"center",
                 justifyContent:"center"
             }}>
-                <h1 style = {{margin:"20px", fontWeight:"bold"}}>Oops Something went wrong!!</h1>
-                <Link className='link' to = "/signin" style = {{color: "#0387f3"}}><strong>Back to Login</strong></Link>
+                <h1 style = {{margin:"20px", fontWeight:"bold"}}>Page not found</h1>
+                <Link className='link' to = "/signin" style = {{color: "#0387f3"}}><strong>Back to home</strong></Link>
             </div>
         </>
     )

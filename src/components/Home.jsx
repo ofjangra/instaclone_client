@@ -21,7 +21,7 @@ const Home = () =>{
             const tokenPresent = localStorage.getItem("jwtoken")
 
             if(!tokenPresent){
-               return  navigate("/signin")
+               return  navigate("accounts/signin")
             }
             const resp = await fetch(API_endpoint + "/allpost",{
                 method:"GET",
@@ -85,7 +85,6 @@ const Home = () =>{
 
     return(
         <>
-        <UserNav/>
         <div className="home">
             <div className="homePosts">
 
@@ -110,9 +109,9 @@ const Home = () =>{
                     })
                 }
             </div>
-            <div className="followSuggestions">
+            {/* <div className="followSuggestions">
                 
-            </div>
+            </div> */}
         </div>
         </>
     )

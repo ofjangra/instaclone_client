@@ -92,7 +92,7 @@ const EditProfile = () =>{
     }
 
     const getUserData = async () =>{
-        const resp = await fetch(API_endpoint+'/profile', {
+        const resp = await fetch(API_endpoint+'/getprofile', {
             method:"GET",
             headers:{
                 "Content-Type":"application/json",
@@ -101,7 +101,7 @@ const EditProfile = () =>{
         })
 
         const respJson = await resp.json()
-
+        console.log(respJson)
         setUserData({
             username:respJson.userDetails.username,
             name:respJson.userDetails.name,
@@ -145,7 +145,7 @@ const EditProfile = () =>{
             })
         }
         if(updateProfileRespJson.message){
-            navigate("/profile")
+            navigate("/")
         }
         } catch(err){
             console.log(err)
@@ -190,7 +190,6 @@ const EditProfile = () =>{
 
     return(
         <>
-        <UserNav/>
             <div className='editProfile_wrapper'>
                 <h3>Edit Profile</h3>
                 <div className='editProfile'>
