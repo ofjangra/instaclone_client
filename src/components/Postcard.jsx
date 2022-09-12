@@ -102,6 +102,18 @@ const Postcard = (props) =>{
                             </p>
                         </div>
                         <span className="blue-text">view all {commentCount} comments</span>
+                        <div className="allComments">
+                            {
+                                props.comments.map((comment) =>{
+                                    return(
+                                        <div>
+                                            <strong></strong>
+                                        </div>
+                                    )
+                                })
+                            }
+                            
+                        </div>
                         <div className="makeComment">
                             <input type="text"
                             placeholder = "Comment"
@@ -123,7 +135,7 @@ const Postcard = (props) =>{
 
                     </div>
                 </div>
-                <ProfilesViewModal isOpen={open} onClose= {() => setOpen(!open)} api = {api}/>
+                <ProfilesViewModal isOpen={open} onClose= {() => setOpen(!open)} api = {api} title={'Likes'}/>
         </>
     )
 }
