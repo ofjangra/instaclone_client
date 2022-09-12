@@ -101,13 +101,18 @@ const Postcard = (props) =>{
                                 {props.caption}
                             </p>
                         </div>
-                        <span className="blue-text">view all {commentCount} comments</span>
+                        <span>
+                            <p style = {{opacity:"70%"}}>view all {commentCount} comments</p>
+                        </span>
                         <div className="allComments">
                             {
                                 props.comments.map((comment) =>{
                                     return(
-                                        <div>
-                                            <strong></strong>
+                                        <div key = {comment._id} style = {{
+                                            display:"flex"
+                                        }}>
+                                            <strong style = {{marginRight:"10px"}}>{comment.commentedBy}</strong>
+                                            <p>{comment.text}</p>
                                         </div>
                                     )
                                 })
