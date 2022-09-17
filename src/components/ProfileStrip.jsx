@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 const ProfileStrip = (props) =>{
     return(
+
         <>
             
                 <div className='profile_strip' style = {{
@@ -19,7 +21,9 @@ const ProfileStrip = (props) =>{
                         borderRadius:"15px",
                         marginRight:"20px"
                     }}/>
-                    <strong>{props.username}</strong>
+                    <a href = {`http://localhost:5173/${props.username}`} className="link">
+                        <strong>{props.username}</strong>
+                    </a>
                 </div>
         </>
     )

@@ -95,7 +95,7 @@ const Login = () =>{
                 Login
             </button>
             <p>Do not have an account?</p>
-            <Link to ="/signup" className="link">
+            <Link to ="/accounts/signup" className="link">
                 <strong style={{color: "rgb(3, 135, 243)"}}>Signup</strong>
             </Link>
             </form>

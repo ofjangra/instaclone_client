@@ -8,17 +8,13 @@
 }
 
 .spinner{
-    height: 60px;
-    width: 60px;
-    /* background-image: linear-gradient(to right, rgba(255, 255, 255, 0.753), rgba(128, 128, 128, 0.664), rgba(0, 0, 0, 0.521)); */
-    border-radius: 30px;
-    border-left: 4px solid red;
+    border-left: 2px solid rgb(20, 20, 20);
+    border-bottom: 2px solid rgb(20, 20, 20);
     display: flex;
     align-items: center;
     justify-content: center;
     animation: rotate 2s infinite;
-    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
-}
+    }
 
 @keyframes rotate{
  from{

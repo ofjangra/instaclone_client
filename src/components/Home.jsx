@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Postcard from "./Postcard";
+import Preload from "./Preload";
 import UserNav from "./UserNav";
 
 const API_endpoint = 'http://localhost:5000'
 
 
 const Home = () =>{
+    const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
     const [data, setData] = useState({
         posts:[],
@@ -23,7 +25,7 @@ const Home = () =>{
             if(!tokenPresent){
                return  navigate("accounts/signin")
             }
-            const resp = await fetch(API_endpoint + "/allpost",{
+            const resp = await fetch(API_endpoint + "/homefeed",{
                 method:"GET",
                 headers:{
                     "Content-Type":"application/json",
@@ -41,6 +43,8 @@ const Home = () =>{
                     id:respJson.viewer.id
                 }
             })
+
+            setLoading(false)
 
             if (respJson.error){
 
@@ -81,6 +85,9 @@ const Home = () =>{
     } catch(err){
         console.log(err)
     }
+   }
+   if (loading){
+    return <Preload h = {"60px"} w = {"60px"} r = {"30px"}/>
    }
 
     return(

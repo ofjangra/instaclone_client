@@ -129,11 +129,12 @@ body{
     align-items: center;
     justify-content: center;
     padding: 8px;
+    background-color: #303030;
 }
 .photoPreview img{
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 .postCaption{
     flex-basis: 45%;

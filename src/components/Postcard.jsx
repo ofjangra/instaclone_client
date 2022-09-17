@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-
-import { Comment} from "@mui/icons-material";
+import React, { useState } from "react";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import DeleteIcon from '@mui/icons-material/Delete';
-
 import ProfilesViewModal from "./ProfilesViewModal";
 
 const API_endpoint = 'http://localhost:5000'
+const client_endpoint = "http://localhost:5173"
 
 const Postcard = (props) =>{
     const [likesCount, updateLikesCount] = useState(props.likes.length)
@@ -63,21 +63,21 @@ const Postcard = (props) =>{
             updateCommentCount(commentCount+1)
         }
     }
+
+    const [commentsExpended, setCommentesExpended] = useState(false)
     
     const viewLikes = (id) =>{
         setOpen(true)
-        setApi(`http://localhost:5000/posts/likes/${id}`)
+        setApi(API_endpoint + `/posts/likes/${id}`)
     }
 
-
-    
     return(
         <>
         
         <div className="homePost">
                     <div className="publisherDetails">
                             <img src = {props.publisherPhoto} alt = "profile photo"/>
-                            <strong>{props.publisher}</strong>
+                            <a href = {client_endpoint + `/${props.publisher}`} className="link"><strong>{props.publisher}</strong></a>
                           {props.publisher == props.viewer ? <DeleteIcon id = "deleteIcon" onClick = {props.deletePost}  style = {{cursor:"pointer"}}/> : null}
                     </div>
                     <div className="postImg">
@@ -85,40 +85,86 @@ const Postcard = (props) =>{
                             alt = "post"/>
                     </div>
                     <div className="postActions">
-                            <Comment  style = {{cursor:"pointer"}}/>
+                    
                             {
                                 liked ? <FavoriteBorderIcon onClick = {() => unlikePost(props.post_id)} style = {{color:"red", cursor:"pointer"}}/> : <FavoriteBorderIcon onClick = {() => likePost(props.post_id)}  style = {{cursor:"pointer"}}/>
                             }
+
+                            {
+                        likesCount === 0 ?
+                            <span className="likesCount">
+                            <strong>{likesCount}</strong> likes
+                        </span> :
+                         <span className="likesCount" onClick = {() => viewLikes(props.post_id)} style = {{cursor:"pointer"}}>
+                            <strong>{likesCount}</strong> likes
+                        </span>
+                    }
                             
                     </div>
-                    <span className="likesCount" onClick = {() => viewLikes(props.post_id)} style = {{cursor:"pointer"}}>
-                        <strong>{likesCount}</strong> likes
-                    </span>
+                   
+                   
                     <div className="postDetails">
                         <div className="postBody">
-                            <strong>{props.publisher}</strong>
+                        <a href = {client_endpoint + `/${props.publisher}`} className="link"><strong>{props.publisher}</strong></a>
                             <p>
                                 {props.caption}
                             </p>
                         </div>
-                        <span>
-                            <p style = {{opacity:"70%"}}>view all {commentCount} comments</p>
+                        {
+                            commentCount === 0 ?
+
+                            <p>0 comment</p> :
+
+                        <span style = {{
+                            display:"flex",
+                            alignItems:"center",
+                            justifyContent:"space-between",
+                            cursor:"pointer"
+                        }} onClick = {() => setCommentesExpended(!commentsExpended) }>
+                            <div style ={{
+                                height:"18px",
+                                width:"18px",
+                                display:"flex",
+                                alignItems:"center",
+                                justifyContent:"center"
+                            }}>
+                                {
+                                    commentsExpended ? 
+                                    
+                                    <KeyboardDoubleArrowUpIcon style = {{fontSize:"16px", color:"rgb(0, 165, 255)"}}/> :
+
+                                    <KeyboardDoubleArrowDownIcon style = {{fontSize:"16px", color:"rgb(0, 165, 255)"}}/>
+                                    
+                                }
+                             
+                            </div>
+                            <p style = {{opacity:"70%", marginLeft:"5px"}}>view all {commentCount} comments</p>
                         </span>
-                        <div className="allComments">
+                        }
+                        {
+                            commentsExpended ? 
+                            <div className="allComments">
                             {
                                 props.comments.map((comment) =>{
                                     return(
                                         <div key = {comment._id} style = {{
-                                            display:"flex"
+                                            display:"flex",
+                                            height:"20px",
+                                            width:"32ch"
                                         }}>
+                                            <a href = {client_endpoint + `/${comment.commentedBy}`} className="link">
                                             <strong style = {{marginRight:"10px"}}>{comment.commentedBy}</strong>
+                                            </a>
                                             <p>{comment.text}</p>
+                                           
                                         </div>
                                     )
                                 })
                             }
                             
-                        </div>
+                        </div> : null
+                        }
+                      
                         <div className="makeComment">
                             <input type="text"
                             placeholder = "Comment"

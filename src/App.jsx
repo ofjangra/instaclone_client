@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import ErrorPage from './components/Error'
+import Preload from './components/Preload'
 import Layout from './components/Layout'
 
 const App = () =>{
