@@ -1,9 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import UserNav from "./UserNav";
+import ProfilesViewModal from "./ProfilesViewModal";
 const API_endpoint = 'http://localhost:5000'
-const Profile = ({userDetails, posts, owner}) =>{
+const Profile = ({userDetails, followersCount, posts, owner, following, follow, unfollow}) =>{
 
+const [modalOpen, setModalOpen] = useState(false)
+
+const [api, setApi] = useState("")
+
+const [modalTitle, setModalTitle] = useState("")
+  
+   
+const viewFollowers = (id) =>{
+    setModalTitle("Followers")
+    setApi(API_endpoint + `/allfollowers/${id}`)
+    setModalOpen(true)
+    
+}
+const viewFollowings = (id) =>{
+    setModalTitle("Following")
+    setApi(API_endpoint + `/allfollowings/${id}`)
+    setModalOpen(true)
+    
+}
     return(
         <>
         <div className="profileContainer">
@@ -25,12 +44,38 @@ const Profile = ({userDetails, posts, owner}) =>{
                        <button>Edit Profile</button>
                        </Link> : null
                        }
+                       { 
+                       
+                        !owner && !following ? 
+                        <button onClick={follow} style = {{
+                            backgroundColor:"rgb(0, 165, 255)",
+                            color:"#ffffff",
+                            border:"none"
+                        }}>Follow</button>
+                         :
+                        !owner && following ?
+                        <button onClick={unfollow}>Unfollow</button> :
+                        null
+                       }
                        
                    </div>
                    <div className="entityCounts">
-                       <span className="postCount"><strong>{"9"}</strong> posts</span>
-                       <span className="followersCount"><strong>{"9"}</strong> followers</span>
-                       <span className="followingCount"><strong>{"10"}</strong> followings</span>
+                       <span className="postCount"><strong>{posts.length}</strong> posts</span>
+                       {
+                        followersCount === 0 ?
+                        <span className="followersCount"><strong>{followersCount}</strong> followers</span> :
+                        <span className="followersCount" onClick={() =>viewFollowers(userDetails.userId)} style = {{cursor:"pointer"}}>
+                            <strong>{followersCount}</strong> followers</span>
+                       }
+
+                       {
+                        userDetails.followingsCount === 0 ?
+                        <span className="followingsCount"><strong>{userDetails.followingsCount}</strong> following</span> :
+                        <span className="followingsCount" onClick={() =>viewFollowings(userDetails.userId)} style = {{cursor:"pointer"}}>
+                            <strong>{userDetails.followingsCount}</strong> following</span>
+                       }
+                       
+ 
                    </div>
                    <div className="bio">
                        <strong className="name">{userDetails.name}</strong>
@@ -56,6 +101,7 @@ const Profile = ({userDetails, posts, owner}) =>{
            </div>
        </div>
        </div>
+       <ProfilesViewModal isOpen={modalOpen} onClose= {() => setModalOpen(!modalOpen)} api = {api} title={modalTitle}/>
         </>
     )
 }

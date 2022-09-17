@@ -1,14 +1,12 @@
 import React from "react";
 
 
-const Preload = () =>{
+const Preload = ({h, w, r}) =>{
     return(
         <>
             <div className="preloadContainer">
-                <div className="spinner">
-                    <div className="insideSpinner">
-
-                    </div>
+                <div className="spinner" style = {{height:h, width:w, borderRadius:r}}>
+                   
                 </div>
             </div>
         </>

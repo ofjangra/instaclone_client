@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import ClearIcon from "@mui/icons-material/Clear";
 import ProfileStrip from './ProfileStrip'
 import * as ReactDom from "react-dom";
+import Preload from './Preload';
 const modalRoot = document.querySelector(".modalRoot");
 const ProfilesViewModal = ({isOpen, onClose, api, title}) => {
   if(!isOpen) return null;
-
+  const [loading, setLoading] = useState(true)
   const [profilesArray, setProfilesArray] = useState([])
 
   const getProfiles = async() =>{
@@ -15,6 +16,7 @@ const ProfilesViewModal = ({isOpen, onClose, api, title}) => {
     const respJson = await resp.json()
     console.log(respJson)
     setProfilesArray(respJson)
+    setLoading(false)
   }
 
   useEffect(()=>{
@@ -23,13 +25,15 @@ const ProfilesViewModal = ({isOpen, onClose, api, title}) => {
   return ReactDom.createPortal(
     <>
         <div className='LC_modalContainer' style = {{
-          height:"auto",
-          width:"auto",
+          height:"100vh",
+          width:"100%",
           position:"fixed",
-          top:"50%",
-          left:"50%",
-          transform:"translate(-50%, -50%)",
-          padding:"30px",
+          top:"0",
+          left:"0",
+          display:"flex",
+          alignItems:"center",
+          justifyContent:"center",
+          backgroundColor:"rgba(255, 255, 255, 0.7)"
         }}>
          
             <div className='usersCard' style = {{
@@ -43,15 +47,16 @@ const ProfilesViewModal = ({isOpen, onClose, api, title}) => {
               flexDirection:"column",
               alignItems:"center",
               position:"relative",
-              backgroundColor:"#ffffff"
+              backgroundColor:"#ffffff",
             }}>
-              <div style={{width:"100%",
+              <div style={{
+              width:"100%",
+              height:"28px",
               position:"absolute",
               top:"0",
               left:"0",
               borderTopLeftRadius:"10px",
-              borderTopRightRadius:"10px",
-              height:"auto", 
+              borderTopRightRadius:"10px", 
               padding:"4px 10px 4px 10px",
               display:"flex",
               alignItems:"center",
@@ -64,6 +69,7 @@ const ProfilesViewModal = ({isOpen, onClose, api, title}) => {
             }}/>
               </div>
               {
+                loading ? <Preload h = {"40px"} w = {"40px"} r ={"20px"}/> :
                 profilesArray.map((profile) =>{
                   return(
                     <>

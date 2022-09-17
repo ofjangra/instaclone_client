@@ -4,11 +4,13 @@ import { useNavigate } from "react-router-dom";
 import ClearIcon from "@mui/icons-material/Clear";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import * as ReactDom from "react-dom";
+import Preload from "./Preload";
 const modalRoot = document.querySelector(".modalRoot");
 const API_endpoint = 'http://localhost:5000'
 const Createpost = ({ open, onClose }) => {
   if (!open) return null;
 
+  const [loading, setLoading] = useState(false)
   const inputRef = useRef(null);
 
   const fileRefClick = () => {
@@ -39,6 +41,7 @@ const Createpost = ({ open, onClose }) => {
   };
 
   const submitPost = async () => {
+    setLoading(true)
     try {
       const data = new FormData();
 
@@ -71,14 +74,16 @@ const Createpost = ({ open, onClose }) => {
           imageurl: cloudRespImageUrl,
         }),
       });
-      navigate("/");
-      onClose();
+      
+     
       const postSaveResp = await savepost.json();
 
       if (postSaveResp.error) {
         alert(postSaveResp.error);
       } else if (postSaveResp.message) {
       }
+      navigate("/");
+      onClose();
     } catch (err) {
       console.log(err);
     }
@@ -89,7 +94,7 @@ const Createpost = ({ open, onClose }) => {
       <div className="createPostContainer">
         <ClearIcon onClick={onClose} id="closeModal" />
 
-        {file === null ? (
+        {file === null ? 
           <div className="createPost">
             <div className="postSelect">
               <div className="createPostTitle">
@@ -102,12 +107,15 @@ const Createpost = ({ open, onClose }) => {
               <button onClick={fileRefClick}>Select Photo</button>
             </div>
           </div>
-        ) : (
-          <div className="postForm">
+         :  (
+          <div className="postForm" style = {{position:"relative"}}>
             <div className="postFormTitle">
               <ArrowBackIcon onClick={onClose} id="discardCreatePost" />
               <h6>Create a Post</h6>
             </div>
+            {
+              loading ? <Preload h = {"60px"} w = {"60px"} r = {"30px"}/> :
+            
             <div className="postFormDetails">
               <div className="photoPreview">
                 <img src={filePreview} alt="post" />
@@ -125,6 +133,7 @@ const Createpost = ({ open, onClose }) => {
                 </button>
               </div>
             </div>
+        }
           </div>
         )}
       </div>

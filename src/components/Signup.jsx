@@ -145,7 +145,7 @@ const Signup = () => {
 
             <button type="submit">Signup</button>
             <p>Already have an account?</p>
-            <Link to="/signin" className="link">
+            <Link to="/accounts/signin" className="link">
               <strong style={{ color: "rgb(3, 135, 243)" }}>Signin</strong>
             </Link>
           </form>
