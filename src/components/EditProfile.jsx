@@ -145,7 +145,7 @@ const EditProfile = () =>{
             })
         }
         if(updateProfileRespJson.message){
-            navigate("/")
+            navigate(`/${updateProfileRespJson.username.username}`)
         }
         } catch(err){
             console.log(err)
@@ -183,8 +183,9 @@ const EditProfile = () =>{
             })
         })
 
-        const updatePhotoRespJson = updatePhotoResp.json()
+        const updatePhotoRespJson = await updatePhotoResp.json()
 
+        
         console.log(updatePhotoRespJson)
     }
 

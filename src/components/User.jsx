@@ -27,6 +27,7 @@ const User = () =>{
         },
         posts:[],
     })
+    
     const navigate = useNavigate()
     useEffect(() =>{
         getUser()
@@ -53,6 +54,7 @@ const User = () =>{
         console.log(respJson)
 
         if(respJson.error){
+            setLoading(false)
             return setError(respJson.error)
         }
 
@@ -72,7 +74,6 @@ const User = () =>{
             },
             posts:respJson.posts,
         })
-
         setFollowing(respJson.userDetails.followers.includes(respJson.user_props.viewerID))
         setFollowersCount(respJson.userDetails.followers.length)
         setLoading(false)
@@ -82,6 +83,7 @@ const User = () =>{
     } catch(err){
         navigate('/error')
         console.log(err)
+        setError(respJson.error)
     }
     
     }

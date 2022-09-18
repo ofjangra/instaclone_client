@@ -37,7 +37,7 @@ const UserNav = () =>{
 
        useEffect(() =>{
         getUser()
-       },[])
+       },[userRoute])
 
     const logoustUser = () =>{
         localStorage.clear()
