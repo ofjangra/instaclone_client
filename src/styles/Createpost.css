@@ -37,6 +37,7 @@ body{
 .postSelect{
     height: 100%;
     width: 50%;
+    min-width: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -169,3 +170,8 @@ body{
     cursor: pointer;
 }
 
+@media screen and (max-width:720px) {
+.postFormDetails{
+    flex-direction: column;
+}
+}

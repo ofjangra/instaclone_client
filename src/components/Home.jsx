@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Postcard from "./Postcard";
 import Preload from "./Preload";
-import UserNav from "./UserNav";
+
 
 const API_endpoint = 'http://localhost:5000'
 
@@ -116,9 +116,6 @@ const Home = () =>{
                     })
                 }
             </div>
-            {/* <div className="followSuggestions">
-                
-            </div> */}
         </div>
         </>
     )

@@ -3,11 +3,7 @@ import { createSlice,  createAsyncThunk} from "@reduxjs/toolkit";
 
 const initialState = {
     username:null,
-    userId:null,
-    followers:null,
-    followings:null,
-    phone:null,
-    posts:null
+    error:null
 }
 
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import ProfilesViewModal from "./ProfilesViewModal";
 const API_endpoint = 'http://localhost:5000'
+const client_endpoint = 'http://localhost:5173'
 const Profile = ({userDetails, followersCount, posts, owner, following, follow, unfollow}) =>{
 
 const [modalOpen, setModalOpen] = useState(false)
@@ -89,10 +90,12 @@ const viewFollowings = (id) =>{
                    
                    posts.map((post) =>{
                        return(
-                        <div className="postPhoto" key={post._id}>
+                        <a href = {client_endpoint+`/p/${post._id}`} key={post._id}>
+                        <div className="postPhoto" >
                         <img src = {post.imageurl}
                         alt = "post"/>
                     </div>
+                    </a>
                        )
                    })
                }

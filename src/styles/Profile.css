@@ -20,7 +20,6 @@
     align-items: center;
     justify-content: space-between;
     padding: 40px 0 40px 0;
-    border-bottom: 1px solid rgb(153, 153, 153);
 }
 .profilePhoto{
     flex-basis: 30%;
@@ -110,7 +109,7 @@
 
 .gallery{
     height: auto;
-    width: 100%;
+    width: auto;
     display: grid;
     grid-template-columns: auto auto auto;
     grid-template-rows: auto;
@@ -118,7 +117,8 @@
     column-gap: 25px;
     margin-top:30px;
     margin-bottom: 80px;
-
+    border-top: 1px solid rgb(153, 153, 153);
+    padding-top: 25px;
 }
 .postPhoto{
     height: 280px;
@@ -126,13 +126,132 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: blue;
+    /* background-color: aqua; */
 }
 
 .postPhoto img{
     height: 280px;
-    width: 100%;
+    width: 280px;
+    /* max-width: 280px;
+    min-width: 280px; */
     object-fit: cover;
 }
 
-
+@media screen and (max-width:1060px) {
+    .profileMain{
+        width: 80%;
+    }
+    .profileEdit, .entityCounts{
+        width: 70%;
+    }
+}
+@media screen and (max-width:930px) {
+    .profileMain{
+        width: 90%;
+    }
+    .profileEdit, .entityCounts{
+        width: 80%;
+    }
+    .gallery{
+        padding-top: 32px;
+        column-gap: 20px;
+        row-gap: 25px;
+    }
+    .postPhoto{
+        width: 100%;
+        height: 200px;
+    }
+    .postPhoto img{
+        width: 240px;
+        height: 240px;
+    }
+}
+@media screen and (max-width:800px) {
+    .profileEdit, .entityCounts{
+        width: 90%;
+    }
+    .gallery{
+        padding-top: 32px;
+        column-gap: 18px;
+        row-gap: 25px;
+    }
+    .postPhoto{
+        width: 100%;
+        height: 200px;
+    }
+    .postPhoto img{
+        width: 200px;
+        height: 200px;
+    }
+}
+@media screen and (max-width:660px) {
+    .profileMain{
+        width: 100%;
+        padding: 10px;
+    }
+    .profileInfo{
+        flex-direction: column;
+        width: 90%;
+    }
+    .profilePhoto{
+        flex-basis: 30%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;    
+    }
+    .profilePhoto div{
+        height: 120px;
+        width: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+  
+    .profileDetails{
+        margin-top: 32px;
+        flex-basis: 60%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+    
+    }
+    .profileEdit{
+        height: auto;
+        padding: 4px 0 4px 0;
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    
+    }
+    .profileEdit h5{
+        font-size: 24px;
+    }
+    .profileEdit button{
+        margin-left: 52px;
+    }
+   
+    
+    .entityCounts{
+        margin-top: 20px;
+        width: 60%;
+        
+    }
+    .gallery{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .postPhoto{
+        width: 100%;
+        height: auto;
+        /* background-color: blue; */
+    }
+    .postPhoto img{
+        width: 90%;
+        height: auto;
+    }
+}
