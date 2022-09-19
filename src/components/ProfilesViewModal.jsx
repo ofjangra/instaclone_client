@@ -14,7 +14,7 @@ const ProfilesViewModal = ({isOpen, onClose, api, title}) => {
       method:"GET"
     })
     const respJson = await resp.json()
-    console.log(respJson)
+    
     setProfilesArray(respJson)
     setLoading(false)
   }

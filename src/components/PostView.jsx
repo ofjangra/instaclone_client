@@ -4,7 +4,8 @@ import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ProfilesViewModal from "./ProfilesViewModal";
-const API_endpoint = 'http://localhost:5000'
+import LoginModal from "./LoginModal";
+const API_endpoint = "http://localhost:5000"
 const client_endpoint = "http://localhost:5173"
 
 const PostView = (props) =>{
@@ -13,6 +14,7 @@ const PostView = (props) =>{
     const [comment, setComment] = useState("")
     const [commentCount, updateCommentCount] = useState(props.comments.length)
     const [open, setOpen] = useState(false)
+    const [modalOpen, setModalOpen] = useState(false)
     const [api, setApi] = useState("")
 
     const likePost = async (id) =>{
@@ -85,6 +87,7 @@ const PostView = (props) =>{
                     <div className="postActions">
                     
                             {
+                                !props.loggedIn ? <FavoriteBorderIcon onClick = {() => setModalOpen(true)}  style = {{cursor:"pointer"}}/> :
                                 liked ? <FavoriteBorderIcon onClick = {() => unlikePost(props.post_id)} style = {{color:"red", cursor:"pointer"}}/> : <FavoriteBorderIcon onClick = {() => likePost(props.post_id)}  style = {{cursor:"pointer"}}/>
                             }
 
@@ -170,7 +173,12 @@ const PostView = (props) =>{
                             name = "comment"
                             onChange={(e) => setComment(e.target.value)}
                             />
-                            {comment === "" ? 
+                            {
+                            !props.loggedIn ?  
+                                <button style = {{opacity:"70%"}} onClick={() =>setModalOpen(!modalOpen)}>
+                                    Post
+                                </button> :
+                            comment === "" ? 
                                 <button style = {{opacity:"70%"}}>
                                     Post
                                 </button>
@@ -184,6 +192,7 @@ const PostView = (props) =>{
 
                     </div>
                 </div>
+                <LoginModal isOpen={modalOpen} onClose = {()=> setModalOpen(!modalOpen)}/>
                 <ProfilesViewModal isOpen={open} onClose= {() => setOpen(!open)} api = {api} title={'Likes'}/>
         </>
     )

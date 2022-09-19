@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom'
 
 
 const ErrorPage = () =>{
-    useEffect(() =>{
-        localStorage.clear()
-    }, [])
     return(
         <>
             <div style = {{
@@ -22,7 +19,7 @@ const ErrorPage = () =>{
                 justifyContent:"center"
             }}>
                 <h1 style = {{margin:"20px", fontWeight:"bold"}}>Page not found</h1>
-                <Link className='link' to = "/signin" style = {{color: "#0387f3"}}><strong>Back to home</strong></Link>
+                <Link className='link' to = "/" style = {{color: "#0387f3"}}><strong>Back to home</strong></Link>
             </div>
         </>
     )

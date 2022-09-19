@@ -21,23 +21,27 @@ const LoginModal = ({isOpen, onClose}) =>{
                 left:"0",
                 display:"flex",
                 alignItems:"center",
-                justifyContent:"center"
+                justifyContent:"center",
+                backgroundColor:"rgba(255, 255, 255, 0.7)"
             }}>
                 <div style = {{
-                    height:"320px",
-                    width:"400px",
+                    height:"220px",
+                    width:"300px",
                     position:"relative",
                     display:"flex",
                     flexDirection:"column",
                     alignItems:"center",
-                    borderRadius:"10px"
+                    borderRadius:"10px",
+                    boxShadow:"2px 2px 4px gray",
+                    backgroundColor:"#ffffff"
                 }}>
                     <Clear style={{
                         position:"absolute",
                         top:"10px",
-                        right:"10px"
+                        right:"10px",
+                        cursor:"pointer"
                     }} onClick = {onClose}/>
-                    <div style = {{flexBasis:"50%", display:"flex", alignItems:"center", justifyContent:"center", borderBottom:"1px solid gray"}}>
+                    <div style = {{flexBasis:"50%", width:"90%", display:"flex", alignItems:"center", justifyContent:"center", borderBottom:"1px solid gray"}}>
                         <Link to = "/accounts/signin" className="link">
                             <strong style = {{color:"rgb(0, 165, 255)"}}>Login</strong>
                         </Link>

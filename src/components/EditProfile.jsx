@@ -1,8 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react'
 import { useNavigate } from 'react-router-dom'
-import UserNav from './UserNav'
 
-const API_endpoint = 'http://localhost:5000'
+const API_endpoint = "http://localhost:5000"
 
 const EditProfile = () =>{
     
@@ -101,7 +100,6 @@ const EditProfile = () =>{
         })
 
         const respJson = await resp.json()
-        console.log(respJson)
         setUserData({
             username:respJson.userDetails.username,
             name:respJson.userDetails.name,
@@ -136,8 +134,6 @@ const EditProfile = () =>{
         })
         const updateProfileRespJson = await updateProfileResp.json()
 
-        console.log(updateProfileRespJson)
-
         if(updateProfileRespJson.error){
             setErrors({
                 username: updateProfileRespJson.error.username,
@@ -148,7 +144,7 @@ const EditProfile = () =>{
             navigate(`/${updateProfileRespJson.username.username}`)
         }
         } catch(err){
-            console.log(err)
+            
         }
     }
 
@@ -160,7 +156,6 @@ const EditProfile = () =>{
         data.append("upload_preset", "instaclone")
         data.append("cloud_name","ofjangra")
 
-        console.log(data)
 
        const cloudinaryResp = await fetch("https://api.cloudinary.com/v1_1/ofjangra/image/upload",{
             method:"POST",
@@ -186,7 +181,7 @@ const EditProfile = () =>{
         const updatePhotoRespJson = await updatePhotoResp.json()
 
         
-        console.log(updatePhotoRespJson)
+    
     }
 
     return(

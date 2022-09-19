@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
+const client_endpoint = "http://localhost:5173"
 
 const ProfileStrip = (props) =>{
     return(
@@ -21,7 +21,7 @@ const ProfileStrip = (props) =>{
                         borderRadius:"15px",
                         marginRight:"20px"
                     }}/>
-                    <a href = {`http://localhost:5173/${props.username}`} className="link">
+                    <a href = {client_endpoint + `/${props.username}`} className="link">
                         <strong>{props.username}</strong>
                     </a>
                 </div>

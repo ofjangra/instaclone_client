@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import ProfilesViewModal from "./ProfilesViewModal";
-const API_endpoint = 'http://localhost:5000'
+import LoginModal from "./LoginModal";
+const API_endpoint = "http://localhost:5000"
 const client_endpoint = 'http://localhost:5173'
-const Profile = ({userDetails, followersCount, posts, owner, following, follow, unfollow}) =>{
+const Profile = ({userDetails, followersCount, posts, owner, loggedIn, following, follow, unfollow}) =>{
 
 const [modalOpen, setModalOpen] = useState(false)
 
 const [api, setApi] = useState("")
 
 const [modalTitle, setModalTitle] = useState("")
+
+const [open, setOpen] = useState(false)
   
    
 const viewFollowers = (id) =>{
@@ -46,7 +49,12 @@ const viewFollowings = (id) =>{
                        </Link> : null
                        }
                        { 
-                       
+                       !loggedIn ? 
+                       <button onClick={() => setOpen(true)} style = {{
+                        backgroundColor:"rgb(0, 165, 255)",
+                        color:"#ffffff",
+                        border:"none"
+                        }}>Follow</button> :
                         !owner && !following ? 
                         <button onClick={follow} style = {{
                             backgroundColor:"rgb(0, 165, 255)",
@@ -105,6 +113,7 @@ const viewFollowings = (id) =>{
        </div>
        </div>
        <ProfilesViewModal isOpen={modalOpen} onClose= {() => setModalOpen(!modalOpen)} api = {api} title={modalTitle}/>
+       <LoginModal isOpen={open} onClose = {()=>setOpen(!open)}/>
         </>
     )
 }

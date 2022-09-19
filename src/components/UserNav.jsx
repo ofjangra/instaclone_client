@@ -18,7 +18,7 @@ const UserNav = () =>{
         if(!tokenPresent){
             return
         }
-        const resp = await fetch(API_endpoint + "/profile",{
+        const resp = await fetch(API_endpoint + "/currprofile",{
             method:"GET",
             headers:{
                 "Content-Type":"application/json",
@@ -26,7 +26,7 @@ const UserNav = () =>{
             }
         })
         const respJson = await resp.json()
-        console.log(respJson)
+       
         if(respJson.user){
             setUserLoggedIn(true)
         }
