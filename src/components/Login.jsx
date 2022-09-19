@@ -3,7 +3,7 @@ import { Link, useNavigate} from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from 'yup'
 
-const API_endpoint = 'http://localhost:5000'
+const API_endpoint = "http://localhost:5000"
 
 const Login = () =>{
 
@@ -25,7 +25,7 @@ const Login = () =>{
 
     const signinUser = async (body) =>{
         try{
-            const resp = await fetch(API_endpoint+"/signin",{
+            const resp = await fetch(API_endpoint+"/user_signin",{
                 method:"POST",
                 headers:{
                     "Content-Type": "application/json"
@@ -33,13 +33,13 @@ const Login = () =>{
                 body:JSON.stringify(body),
             })
             const respJson = await resp.json()
-            console.log(respJson)
+            
            if(respJson.token){
                localStorage.setItem("jwtoken", respJson.token)
                navigate("/")
            }
         } catch(err){
-            console.log(err)
+           
             
         }
     }

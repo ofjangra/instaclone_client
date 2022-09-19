@@ -4,7 +4,7 @@ import PostView from "./PostView";
 import Preload from "./Preload";
 
 
-const API_endpoint = 'http://localhost:5000'
+const API_endpoint = "http://localhost:5000"
 
 
 const Post = () =>{
@@ -17,8 +17,8 @@ const Post = () =>{
     const [data, setData] = useState({
         post:{},
         viewer:{
-            username:"",
-            id:""
+            id:"",
+            loggedIn:false
         }
     })
 
@@ -39,7 +39,7 @@ const Post = () =>{
 
             const respJson = await resp.json();
 
-            console.log(respJson)
+            
             setData({
                 post:respJson.post,
                 viewer:{
@@ -52,11 +52,11 @@ const Post = () =>{
 
             if (respJson.error){
 
-                console.log(respJson.error)
+               
             
             }
         } catch(err){
-            console.log(err)
+            
         }
     }
 
@@ -80,9 +80,9 @@ const Post = () =>{
 
        navigate(`${data.post.postedBy.username}`)
 
-       console.log(respJson)
+       
     } catch(err){
-        console.log(err)
+        
     }
    }
    if (loading){
@@ -97,6 +97,7 @@ const Post = () =>{
                 
                    
                             <PostView
+                            loggedIn = {data.viewer.loggedIn}
                             post_id = {data.post._id}
                             deletePost = {() => delete_Post(id)}
                             publisherPhoto = {data.post.postedBy.photo_url}

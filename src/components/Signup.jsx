@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-const API_endpoint = 'http://localhost:5000'
+const API_endpoint = "http://localhost:5000"
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -28,13 +28,13 @@ const Signup = () => {
             }),
         })
         const respJson = await resp.json()
-        console.log(respJson)
+       
        if(respJson.token){
            localStorage.setItem("jwtoken", respJson.token)
            navigate("/")
        }
     } catch(err){
-        console.log(err)
+       
     }
 }
 
@@ -55,7 +55,7 @@ const Signup = () => {
       });
       const signUpRespJson = await signUpResp.json();
 
-      console.log(signUpRespJson);
+      
       if (signUpRespJson.error){
         alert(signUpRespJson.error)
       }
@@ -63,7 +63,7 @@ const Signup = () => {
         await signinUser(username, password)
       }
     } catch (err) {
-      console.log(err);
+      
     }
   };
 

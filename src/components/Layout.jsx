@@ -5,6 +5,7 @@ import Home from './Home'
 import User from "./User";
 import EditProfile from "./EditProfile";
 import Post from './Post'
+import ErrorPage from "./Error";
 const Layout = () => {
     return(
         <>
@@ -15,6 +16,7 @@ const Layout = () => {
             <Route path = ":username" element = {<User/>}/>
             <Route path = "accounts/editprofile" element = {<EditProfile/>}/>
             <Route path = "p/:id" element = {<Post/>}/>
+            <Route path='*' element = {<ErrorPage/>}/>
             
         </Routes>
         </>

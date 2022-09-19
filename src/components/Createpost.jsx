@@ -6,7 +6,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import * as ReactDom from "react-dom";
 import Preload from "./Preload";
 const modalRoot = document.querySelector(".modalRoot");
-const API_endpoint = 'http://localhost:5000'
+const API_endpoint ="http://localhost:5000"
 const Createpost = ({ open, onClose }) => {
   if (!open) return null;
 
@@ -49,8 +49,6 @@ const Createpost = ({ open, onClose }) => {
       data.append("upload_preset", "instaclone");
       data.append("cloud_name", "ofjangra");
 
-      console.log(data);
-
       const cloudinaryResp = await fetch(
         "https://api.cloudinary.com/v1_1/ofjangra/image/upload",
         {
@@ -82,10 +80,10 @@ const Createpost = ({ open, onClose }) => {
         alert(postSaveResp.error);
       } else if (postSaveResp.message) {
       }
-      navigate("/");
+      navigate(`p/${postSaveResp.post}`);
       onClose();
     } catch (err) {
-      console.log(err);
+      
     }
   };
 

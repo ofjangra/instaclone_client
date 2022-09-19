@@ -5,7 +5,7 @@ import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrow
 import DeleteIcon from '@mui/icons-material/Delete';
 import ProfilesViewModal from "./ProfilesViewModal";
 
-const API_endpoint = 'http://localhost:5000'
+const API_endpoint = "http://localhost:5000"
 const client_endpoint = "http://localhost:5173"
 
 const Postcard = (props) =>{

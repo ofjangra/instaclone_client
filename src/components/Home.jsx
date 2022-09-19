@@ -4,7 +4,7 @@ import Postcard from "./Postcard";
 import Preload from "./Preload";
 
 
-const API_endpoint = 'http://localhost:5000'
+const API_endpoint = "http://localhost:5000"
 
 
 const Home = () =>{
@@ -35,7 +35,6 @@ const Home = () =>{
 
             const respJson = await resp.json();
 
-            console.log(respJson)
             setData({
                 posts:respJson.posts,
                 viewer:{
@@ -48,11 +47,11 @@ const Home = () =>{
 
             if (respJson.error){
 
-                console.log(respJson.error)
+                
                 return navigate("/error")
             }
         } catch(err){
-            console.log(err)
+           
         }
     }
 
@@ -81,9 +80,9 @@ const Home = () =>{
 
        const respJson = await resp.json()
 
-       console.log(respJson)
+       
     } catch(err){
-        console.log(err)
+        
     }
    }
    if (loading){

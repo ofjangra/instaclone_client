@@ -44,14 +44,14 @@ const User = () =>{
 
         try{
 
-        const resp = await fetch(`http://localhost:5000/users/${username}`, {
+        const resp = await fetch(API_endpoint+`/users/${username}`, {
         method:"GET" ,
         headers:headers
 
         })
 
         const respJson = await resp.json()
-        console.log(respJson)
+        
 
         if(respJson.error){
             setLoading(false)
@@ -82,7 +82,7 @@ const User = () =>{
     
     } catch(err){
         navigate('/error')
-        console.log(err)
+        
         setError(respJson.error)
     }
     
@@ -104,10 +104,10 @@ const User = () =>{
                 })
             })
             const respJson = await resp.json()
-            console.log(respJson)
+           
             
             } catch(err){
-                console.log(err)
+             
             }
         }
 
@@ -128,10 +128,10 @@ const User = () =>{
             })
         })
         const respJson = await resp.json()
-        console.log(respJson)
+      
         
         } catch(err){
-            console.log(err)
+            
         }
     }
 
@@ -164,6 +164,7 @@ const User = () =>{
                 followersCount = {followersCount}
                 posts = {data.posts} 
                 owner = {data.user_props.viewerID === data.userDetails.userId}
+                loggedIn = {data.user_props.loggedIn}
                 following = { !data.user_props.loggedIn ? false : following}
                 follow = {() =>follow_user(data.userDetails.userId)}
                 unfollow = {() =>unfollow_user(data.userDetails.userId)}
