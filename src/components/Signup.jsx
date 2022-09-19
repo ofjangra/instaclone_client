@@ -75,7 +75,8 @@ const Signup = () => {
     },
 
     validationSchema: Yup.object({
-      username: Yup.string().matches(/^[a-z0-9_-]{3,16}$/igm, "Username can only contain alphabets, numericals, and _")
+      username: Yup.string()
+        .matches(/^[a-z0-9_-]{3,16}$/igm, "Username can only contain alphabets, numericals, and _")
         .required("This field is required")
         .max(16, "Max 16 characters are allowed")
         .min(3, "Minimum 3 characters are required"),
