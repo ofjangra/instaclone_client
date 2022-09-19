@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Postcard from "./Postcard";
 import Preload from "./Preload";
+import Suggestions from "./Suggestions";
 
 
 const API_endpoint = "http://localhost:5000"
@@ -95,6 +96,7 @@ const Home = () =>{
             <div className="homePosts">
 
                 {
+                    data.posts.length == 0 ? <Suggestions/> :
                     data.posts.map((post) =>{
                         return(
                             <Postcard
