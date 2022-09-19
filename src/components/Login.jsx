@@ -7,7 +7,8 @@ const API_endpoint = "http://localhost:5000"
 
 const Login = () =>{
 
- 
+    const [error, setError] = useState("")
+
     const navigate = useNavigate()
 
 
@@ -33,7 +34,9 @@ const Login = () =>{
                 body:JSON.stringify(body),
             })
             const respJson = await resp.json()
-            
+            if(respJson.error){
+                setError(respJson.error)
+            }
            if(respJson.token){
                localStorage.setItem("jwtoken", respJson.token)
                navigate("/")
@@ -50,7 +53,8 @@ const Login = () =>{
             password:""
         },
         validationSchema: Yup.object({
-            username:Yup.string().required("This field is required"),
+            username:Yup.string().matches(/^[a-z0-9_-]{3,16}$/igm, "Invalid username format")
+            .required("This field is required"),
             password:Yup.string().required("This field is required").max(34, "maximum 34 characters are allowed").min(8, "minimum 8 characters are required")
         }),
         onSubmit: (values) =>{
@@ -67,6 +71,7 @@ const Login = () =>{
         <div className = "card">
            
             <h3>Reinstagram</h3>
+            <p style = {{margin:"16px 0 16px 0", color:"firebrick"}}>{error}</p>
             <form onSubmit={formik.handleSubmit} method="POST">
             <div className="inputField">
          <input type = "text"
