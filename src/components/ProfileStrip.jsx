@@ -1,6 +1,6 @@
 import React from 'react'
 
-const client_endpoint = ""
+const client_endpoint = "http://localhost:5173"
 
 const ProfileStrip = (props) =>{
     return(

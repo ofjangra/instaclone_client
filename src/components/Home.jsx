@@ -5,7 +5,7 @@ import Preload from "./Preload";
 import Suggestions from "./Suggestions";
 
 
-const API_endpoint = ""
+const API_endpoint = "http://localhost:5000"
 
 
 const Home = () =>{
