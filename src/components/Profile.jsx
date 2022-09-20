@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import ProfilesViewModal from "./ProfilesViewModal";
 import LoginModal from "./LoginModal";
-const API_endpoint = ""
-const client_endpoint = ''
+const API_endpoint = "http://localhost:5000"
+const client_endpoint = 'http://localhost:5173'
 const Profile = ({userDetails, followersCount, posts, owner, loggedIn, following, follow, unfollow}) =>{
 
 const [modalOpen, setModalOpen] = useState(false)

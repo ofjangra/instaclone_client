@@ -6,7 +6,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import * as ReactDom from "react-dom";
 import Preload from "./Preload";
 const modalRoot = document.querySelector(".modalRoot");
-const API_endpoint =""
+const API_endpoint ="http://localhost:5000"
 const Createpost = ({ open, onClose }) => {
   if (!open) return null;
 

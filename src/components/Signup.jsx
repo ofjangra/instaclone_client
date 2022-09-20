@@ -1,13 +1,14 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-const API_endpoint = ""
+const API_endpoint = "http://localhost:5000"
 
 const Signup = () => {
   const navigate = useNavigate();
 
+  const [error, setError] = useState("")
   useEffect(()=>{
     const tokenPresent = localStorage.getItem("jwtoken")
     if(tokenPresent){
@@ -33,6 +34,7 @@ const Signup = () => {
            localStorage.setItem("jwtoken", respJson.token)
            navigate("/")
        }
+       
     } catch(err){
        
     }
@@ -55,13 +57,13 @@ const Signup = () => {
       });
       const signUpRespJson = await signUpResp.json();
 
-      
-      if (signUpRespJson.error){
-        alert(signUpRespJson.error)
-      }
-      else if(signUpRespJson.message){
+      if(signUpRespJson.message){
         await signinUser(username, password)
       }
+      else if(signUpRespJson.error){
+        setError(signUpRespJson.error)
+      }
+      
     } catch (err) {
       
     }
@@ -100,6 +102,7 @@ const Signup = () => {
       <div className="loginMain">
         <div className="card">
           <h3>Reinstagram</h3>
+          <p style = {{margin:"16px 0 16px 0", color:"firebrick"}}>{error}</p>
           <form onSubmit={formik.handleSubmit}>
             <div className="inputField">
               <input
