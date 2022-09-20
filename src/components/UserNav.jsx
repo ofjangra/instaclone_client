@@ -7,7 +7,7 @@ import { PersonSharp } from "@mui/icons-material";
 import Createpost from "./Createpost";
 import {Link} from 'react-router-dom'
 const UserNav = () =>{
-    const API_endpoint = "http://localhost:5000"
+    const API_endpoint = ""
     const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false)
     const [userRoute, setUserRoute] = useState("")

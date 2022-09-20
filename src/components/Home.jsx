@@ -5,7 +5,7 @@ import Preload from "./Preload";
 import Suggestions from "./Suggestions";
 
 
-const API_endpoint = "http://localhost:5000"
+const API_endpoint = ""
 
 
 const Home = () =>{
@@ -24,7 +24,7 @@ const Home = () =>{
             const tokenPresent = localStorage.getItem("jwtoken")
 
             if(!tokenPresent){
-               return  navigate("accounts/signin")
+               return  navigate("/accounts/signin")
             }
             const resp = await fetch(API_endpoint + "/homefeed",{
                 method:"GET",

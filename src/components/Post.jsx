@@ -4,7 +4,7 @@ import PostView from "./PostView";
 import Preload from "./Preload";
 
 
-const API_endpoint = "http://localhost:5000"
+const API_endpoint = ""
 
 
 const Post = () =>{

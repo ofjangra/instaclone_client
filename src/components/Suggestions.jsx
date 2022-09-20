@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 
 
-const API_endpoint = "http://localhost:5000"
-const client_endpoint = "http://localhost:5173"
+const API_endpoint = ""
+const client_endpoint = ""
 
 
 

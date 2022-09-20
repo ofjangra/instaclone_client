@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const API_endpoint = "http://localhost:5000"
+const API_endpoint = ""
 
 const EditProfile = () =>{
     

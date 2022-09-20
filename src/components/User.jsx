@@ -4,7 +4,7 @@ import Preload from './Preload'
 import Profile from './Profile'
 
 const User = () =>{
-    const API_endpoint = "http://localhost:5000"
+    const API_endpoint = ""
     const [loading, setLoading] = useState(true)
     const params = useParams()
     const {username} = params

@@ -3,7 +3,7 @@ import { Link, useNavigate} from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from 'yup'
 
-const API_endpoint = "http://localhost:5000"
+const API_endpoint = ""
 
 const Login = () =>{
 

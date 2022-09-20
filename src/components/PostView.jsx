@@ -5,8 +5,8 @@ import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrow
 import DeleteIcon from '@mui/icons-material/Delete';
 import ProfilesViewModal from "./ProfilesViewModal";
 import LoginModal from "./LoginModal";
-const API_endpoint = "http://localhost:5000"
-const client_endpoint = "http://localhost:5173"
+const API_endpoint = ""
+const client_endpoint = ""
 
 const PostView = (props) =>{
     const [likesCount, updateLikesCount] = useState(props.likes.length)
